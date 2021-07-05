@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 env_list = dict()
 
-local_env = open(os.path.join(BASE_DIR, '.env')) # 불러들이기
+local_env = open(os.path.join(BASE_DIR, '.env'), encoding='utf-8') # 불러들이기
 # 운영체제의 경로탐색에서 BASE_DIR과 env 파일을 join 즉, 최상위 폴더 gis_6ban_1에 있는 env 파일을 oepn
 
 while True:
