@@ -4,29 +4,16 @@
 {#base.html에서 선언했던 블럭안에 밑의 내용에 들어감#}
 {% block content %}
 
-    <style>
+    <div style="text-align: center; margin: 2rem;">
+        <h1>METHODE</h1>
 
-    .testing {
-        background-color: yellow;
-        margin: 1rem;
-        height: 48px;
-        width: 48px;
-        border-radius: .5rem;
-        display: inline-block;
-    }
+        <form action="/accounts/hello_world/" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-dark">
+        </form>
 
-    </style>
+        <h3>{{ text }}</h3>
 
-
-    <div style="height: 20rem; background-color: aqua; margin: 2rem; border-radius: 1rem; overflow: hidden; ">
-
-        <div class="testing" style="height: 48px; width: 48px;">px</div>
-        <div class="testing" style="height: 3rem; width: 3rem;">rem</div>
-        <div class="testing" style="height: 3em;  width: 3em;">em</div>
-        <div class="testing" style="height: 30%;  width: 30%;">%</div>
-
-   </div>
-
-
+    </div>
 
 {% endblock %}
