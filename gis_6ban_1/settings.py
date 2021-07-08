@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accountapp' # acoountapp을 사용하겠다고 명시
+    'accountapp'   # acoountapp을 사용하겠다고 명시
 ]
 
 MIDDLEWARE = [
