@@ -20,6 +20,10 @@ def hello_world(request):
         new_hello_world.text = temp
         new_hello_world.save()
 
-        return render(request, 'accountapp/hello_world.html', context={'new_hello_world': new_hello_world})
+        # HelloWorld객체에서 모든데이터를 hello_world_list에 저장
+        hello_world_list = HelloWorld.objects.all()
+        return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
+
     else:
-        return render(request, 'accountapp/hello_world.html', context={'text': 'GET METHOD!'})
+        hello_world_list = HelloWorld.objects.all()
+        return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})

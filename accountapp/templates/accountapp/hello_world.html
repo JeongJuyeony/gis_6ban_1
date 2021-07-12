@@ -14,7 +14,11 @@
             <input type="submit" class="btn btn-dark">
         </form>
 
-        <h3>{{ new_hello_world.text }}</h3>
+        {# hello_world_list에서 단일객체 hello_world를 하나씩 뽑아낸다 -> 이전에 입력했던 것까지 모두 출력#}
+        {% for hello_world in hello_world_list %}
+            <h3>{{ hello_world.text }}</h3>
+        {% endfor %}
+        {# for문을 어디까지 돌릴것인지 블록을 닫아줘야함. #}
 
     </div>
 
