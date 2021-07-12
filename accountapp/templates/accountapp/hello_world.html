@@ -9,6 +9,8 @@
 
         <form action="/accounts/hello_world/" method="post">
             {% csrf_token %}
+            {#name : 어떤 이름을 가지고 서버에 보내질 것인지 지정#}
+            <input type="text" name="input_text">
             <input type="submit" class="btn btn-dark">
         </form>
 
