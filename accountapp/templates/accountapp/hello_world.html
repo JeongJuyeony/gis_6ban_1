@@ -5,7 +5,7 @@
 {% block content %}
 
     <div style="text-align: center; margin: 2rem;">
-        <h1>METHODE</h1>
+        <h1>METHOD</h1>
 
         <form action="/accounts/hello_world/" method="post">
             {% csrf_token %}
@@ -14,7 +14,7 @@
             <input type="submit" class="btn btn-dark">
         </form>
 
-        <h3>{{ text }}</h3>
+        <h3>{{ new_hello_world.text }}</h3>
 
     </div>
 
