@@ -11,7 +11,7 @@ from django.shortcuts import render
 # def hello_world(request):
 #     return HttpResponse('Hello World!') return 부분 변경
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accountapp.models import HelloWorld
 
@@ -38,3 +38,10 @@ class AccountCreateView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/create.html'
+
+# 무슨 모델을 읽은것인가에 대한 클래스 선언 (profile page 로직?)
+class AccountDetailView(DetailView):
+    model = User
+    context_object_name = 'target_user'
+    template_name = 'accountapp/detail.html'
+
