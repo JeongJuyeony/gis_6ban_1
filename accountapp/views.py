@@ -11,7 +11,7 @@ from django.shortcuts import render
 # def hello_world(request):
 #     return HttpResponse('Hello World!') return 부분 변경
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from accountapp.models import HelloWorld
 
@@ -45,3 +45,13 @@ class AccountDetailView(DetailView):
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
 
+class AccountUpdateView(UpdateView):
+    # 어떤 객체를 수정할 것인지
+    model = User
+    form_class = UserCreationForm
+    # html내부에서 해당객체를 어떻게 불러올 것인가
+    context_object_name = 'target_user'
+    # 수정이 완료 되었을때 어디로 되돌아 가는지
+    success_url = reverse_lazy('accountapp:hello_world')
+    # 어떤 html기반으로
+    template_name = 'accountapp/update.html'
