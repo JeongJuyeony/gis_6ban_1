@@ -13,6 +13,7 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
+from accountapp.forms import AccountCreationForm
 from accountapp.models import HelloWorld
 
 
@@ -48,8 +49,8 @@ class AccountDetailView(DetailView):
 class AccountUpdateView(UpdateView):
     # 어떤 객체를 수정할 것인지
     model = User
-    # 입력을 위한 창 만들기
-    form_class = UserCreationForm
+    # 입력을 위한 창 만들기 (상속 받아서 변경 불가능하게 커스터마이징)
+    form_class = AccountCreationForm
     # html내부에서 해당객체를 어떻게 불러올 것인가
     context_object_name = 'target_user'
     # 수정이 완료 되었을때 어디로 되돌아 가는지
