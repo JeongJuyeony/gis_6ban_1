@@ -18,27 +18,33 @@ from accountapp.models import HelloWorld
 
 
 def hello_world(request):
-    if request.method == "POST":
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            temp = request.POST.get('input_text')
 
-        temp = request.POST.get('input_text')
+            # new_hello_world : 단일객체
+            new_hello_world = HelloWorld()
+            new_hello_world.text = temp
+            new_hello_world.save()
 
-        # new_hello_world : 단일객체
-        new_hello_world = HelloWorld()
-        new_hello_world.text = temp
-        new_hello_world.save()
+            # Redirect
+            return HttpResponseRedirect(reverse('accountapp:hello_world'))
 
-        # Redirect
-        return HttpResponseRedirect(reverse('accountapp:hello_world'))
+        else:
+            hello_world_list = HelloWorld.objects.all()
+            return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
 
+    # 인증 실패시 로그인창으로 되돌아가도록 설정
     else:
-        hello_world_list = HelloWorld.objects.all()
-        return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
+        return HttpResponseRedirect(reverse('accountapp:login'))
 
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/create.html'
+
+
 
 # 무슨 모델을 읽은것인가에 대한 클래스 선언 (profile page 로직?)
 class AccountDetailView(DetailView):
@@ -49,14 +55,31 @@ class AccountDetailView(DetailView):
 class AccountUpdateView(UpdateView):
     # 어떤 객체를 수정할 것인지
     model = User
+
     # 입력을 위한 창 만들기 (상속 받아서 변경 불가능하게 커스터마이징)
     form_class = AccountCreationForm
+
     # html내부에서 해당객체를 어떻게 불러올 것인가
     context_object_name = 'target_user'
+
     # 수정이 완료 되었을때 어디로 되돌아 가는지
     success_url = reverse_lazy('accountapp:hello_world')
+
     # 어떤 html기반으로 어떻게 렌더링 할 것인지
     template_name = 'accountapp/update.html'
+
+    # 로그인 확인과정(만약, 로그인 안되어있으면 로그인창으로 redirect)
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().post(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
 
 # 회원탈퇴
 class AccountDeleteView(DeleteView):
@@ -66,4 +89,15 @@ class AccountDeleteView(DeleteView):
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/delete.html'
 
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().post(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
 
