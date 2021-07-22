@@ -139,9 +139,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# 100% 이해하기 어려움. 나중에 이해
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+MEDIA_URL = '/media/'
+
+# 100% 이해하기 어려움. 나중에 이해
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
