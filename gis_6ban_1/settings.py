@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',  # 외부라이브러리 bootstrap4를 사용하겠다.
-    'accountapp'   # acoountapp을 사용하겠다고 명시
+    'accountapp',   # acoountapp을 사용하겠다고 명시
+    'profileapp'
 ]
 
 MIDDLEWARE = [
