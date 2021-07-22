@@ -17,6 +17,7 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from accountapp.forms import AccountCreationForm
 from accountapp.models import HelloWorld
+from accountapp.templates.accountapp.decorators import account_ownership_required
 
 
 @login_required(login_url=reverse_lazy('accountapp:login'))
@@ -53,9 +54,11 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
 
 
+has_ownership = [login_required, account_ownership_required]
 
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+# 내 페이지가 아님에도 변경, 탈퇴 가능해서 인증과정 추가필요
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class AccountUpdateView(UpdateView):
     # 어떤 객체를 수정할 것인지
     model = User
@@ -74,8 +77,8 @@ class AccountUpdateView(UpdateView):
 
 
 # 메서드를 변경해주는 데코레이터
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 # 회원탈퇴
 class AccountDeleteView(DeleteView):
     model = User
