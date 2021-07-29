@@ -70,7 +70,8 @@ class AccountUpdateView(UpdateView):
     context_object_name = 'target_user'
 
     # 수정이 완료 되었을때 어디로 되돌아 가는지
-    success_url = reverse_lazy('accountapp:hello_world')
+    def get_success_url(self):
+        return reverse('accountapp:detail', kwargs={'pk':self.object.pk})
 
     # 어떤 html기반으로 어떻게 렌더링 할 것인지
     template_name = 'accountapp/update.html'
