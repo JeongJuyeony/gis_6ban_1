@@ -32,3 +32,20 @@
 .NNS_B{
     font-family: "NanumSquareB", cursive;
 }
+
+.round_button {
+    color: black;
+
+    /* 밑줄 삭제 */
+    text-decoration: none;
+
+    /* 0 0: 그림자 위치 / 3px:그림자 크기 / black: 그림자 색*/
+    box-shadow: 0 0 3px black;
+    border-radius: 15rem;
+    padding: .3rem;
+}
+
+/* 올렸을때 컬러가 파란색으로 바뀌는걸 방지 */
+.round_button:hover {
+    color:dimgrey
+}
