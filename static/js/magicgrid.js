@@ -282,4 +282,12 @@ let magicGrid = new MagicGrid({
   useMin: true
 });
 
+//로드될때마다 이미지 배치
+var masonrys = document.getElementsByTagName("img")
+
+for (let i=0; i<masonrys.length; i++) {
+  masonrys[i].addEventListener('load', function () {
+    magicGrid.positionItems();
+  }, false)
+}
 magicGrid.listen();
