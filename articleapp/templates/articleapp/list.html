@@ -8,15 +8,15 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          border-radius: 8px;
           border-radius: 1rem;
+            flex-direction: column;
+            box-shadow: 0 0 .5rem darkgray;
         }
 
         .container img {
             width: 100%;
             border-radius: 1rem;
         }
-
     </style>
 
     <div class="container my-4">
@@ -50,8 +50,19 @@
       <div class="item10">
           <img src="https://picsum.photos/200/220" alt="">
       </div>
+
+        {% for article in article_list %}
+
+            <div>
+                <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                    <img src="{{ article.image.url }}" alt="">
+                </a>
+                <span class="NNS_B m-2">{{ article.title }}</span>
+            </div>
+
+        {% endfor %}
+
     </div>
 
     <script src="{% static 'js/magicgrid.js' %}"></script>
-
 {% endblock %}
