@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'accountapp',   # acoountapp을 사용하겠다고 명시
     'profileapp',
     'articleapp',
+    'commentapp',
 ]
 
 MIDDLEWARE = [
