@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
     <div class="container text-center">
         <div class="my-5">
             {#      제목, 글쓴이, 작성일자      #}
@@ -8,9 +7,7 @@
             <h3>{{ target_article.writer.profile.nickname }}</h3>
             <p>{{ target_article.created_at }}</p>
         </div>
-
         <hr>
-
         <div class="my-5">
             {#      게시글 대표 이미지, 게시글 내용      #}
             <img src="{{ target_article.image.url }}"
@@ -32,11 +29,30 @@
             </div>
             {% endif %}
         </div>
-
         <hr>
 
         <div class="text-center my-4">
-            {#  댓글 내용, 댓글 작성  #}
+            {#      댓글 내용, 댓글 작성      #}
+
+            {% for comment in target_article.comment.all %}
+
+                <div class="comment_box">
+                    <div>
+                        <span style="font-size: 1.4rem;"
+                              class="NNS_B">
+                            {{ comment.writer.profile.nickname }}
+                        </span>
+                        <span>{{ comment.created_at }}</span>
+                    </div>
+                    <div>
+                        <p>
+                            {{ comment.content }}
+                        </p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
             {% include 'commentapp/create.html' %}
         </div>
     </div>
