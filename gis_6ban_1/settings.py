@@ -42,7 +42,7 @@ SECRET_KEY = env_list['SECRET_KEY'] # 별도의 파일을 만들어 로컬에서
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
