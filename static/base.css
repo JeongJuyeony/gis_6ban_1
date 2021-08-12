@@ -2,65 +2,48 @@
     margin: 2rem 0;
     font-family: 'Pacifico', cursive;
 }
-
-.pragmatic_header_buttom {
+.pragmatic_header_button {
     margin-bottom: 2rem;
 }
-
 .pragmatic_footer_logo {
     margin: 1.5rem 0;
     font-family: 'Pacifico', cursive;
 }
-
-.pragmatic_footer_buttom {
+.pragmatic_footer_button {
     margin-top: 1.5rem;
 }
-
 .mw-500 {
     max-width: 500px;
     padding: 1rem 1.5rem;
-
 }
-
-.profile_image{
+.profile_image {
     height: 12rem;
     width: 12rem;
     border-radius: 20rem;
     object-fit: cover;
 }
-
-.NNS_B{
+.NNS_B {
     font-family: "NanumSquareB", cursive;
 }
-
 .round_button {
     color: black;
-
-    /* 밑줄 삭제 */
     text-decoration: none;
-
-    /* 0 0: 그림자 위치 / 3px:그림자 크기 / black: 그림자 색*/
     box-shadow: 0 0 3px black;
-    border-radius: 15rem;
+    border-radius: 20rem;
     padding: .3rem;
 }
-
-/* 올렸을때 컬러가 파란색으로 바뀌는걸 방지 */
 .round_button:hover {
-    color:dimgrey
+    color: dimgrey;
 }
-
 .article_image {
     width: 60%;
-    border-radius:2rem;
+    border-radius: 2rem;
     box-shadow: 0 0 1rem grey;
 }
-
 .article_content {
     text-align: left;
     font-size: 1.1rem;
 }
-
 .comment_box {
     text-align: left;
     border: solid;
@@ -70,10 +53,10 @@
     margin: 1rem;
 }
 
-@media screen and(max-width: 500px) {
+@media screen and (max-width: 500px) {
     html {
         /* default font-size = 16px */
         font-size: 13px;
-
     }
 }
+
