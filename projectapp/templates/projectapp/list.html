@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
-
     <style>
         .container {
             padding: 0;
@@ -10,18 +8,17 @@
         }
 
         .container div {
-          width: 45%;
-            max-width: 200px;
           display: flex;
           justify-content: center;
           align-items: center;
           border-radius: 1rem;
             flex-direction: column;
-            box-shadow: 0 0 .5rem darkgray;
         }
 
         .container img {
-            width: 100%;
+            width: 7rem;
+            height: 7rem;
+            object-fit: cover;
             border-radius: 1rem;
         }
 
