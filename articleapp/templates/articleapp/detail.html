@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+
+
 {% block content %}
 
 
@@ -6,12 +8,13 @@
         <div class="my-5">
             {#      제목, 글쓴이, 작성일자      #}
             <h1 class="NNS_B">{{ target_article.title }}</h1>
-            <div>
+            <div class="my-3">
                 <a href="{% url 'likeapp:article_like' article_pk=target_article.pk %}"
-                    class="material-icons">
-                     favorite
+                   class="material-icons"
+                   style="vertical-align: middle; font-size: 1.4rem; color: #f77">
+                    favorite
                 </a>
-                <span>
+                <span style="vertical-align: middle; font-size: 1.2rem">
                     {{ target_article.like }}
                 </span>
             </div>
@@ -42,6 +45,7 @@
             </div>
             {% endif %}
         </div>
+
         <hr>
 
         <div class="text-center my-4">
@@ -77,4 +81,6 @@
             {% include 'commentapp/create.html' %}
         </div>
     </div>
+
+
 {% endblock %}
